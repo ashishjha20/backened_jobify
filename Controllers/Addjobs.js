@@ -1,6 +1,6 @@
 // Controllers/Addjobs.js
 const Job = require("../models/Job");
-
+const InterestedJob = require("../models/InterestedJob"); // Import the InterestedJob schema
 
 exports.createJob = async (req, res) => {
   try {
@@ -27,6 +27,15 @@ exports.createJob = async (req, res) => {
       workType,
       description,
       requirements,
+    });
+
+    // Initialize InterestedJob data with no interested candidates
+    await InterestedJob.create({
+      company,
+      title: jobTitle,
+      companyEmail: email,
+      interestedCandidateEmails: [],
+      interestedCandidateNames: [],
     });
 
     // Send a successful response

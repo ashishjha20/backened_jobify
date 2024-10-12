@@ -11,6 +11,11 @@ const  {createJob}  = require("../Controllers/Addjobs"); // Ensure this is corre
 
 const {auth, isStudent,isAdmin} = require("../middlewares/auth");
 const {getAllJobs} = require("../Controllers/Getjobsbycompany")
+const { updateInterestedSchema } = require("../controllers/UpdateInterestedSchema");
+
+router.put("/updateInterest", updateInterestedSchema);
+
+
 
 // Define the route for getting jobs by email
 router.get("/alljobs",getAllJobs);
