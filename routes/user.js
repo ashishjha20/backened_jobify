@@ -4,6 +4,7 @@ const router = express.Router();
 
 
 const User = require("../models/User");
+const { createUser } = require("../controllers/AddUserDetails");
 
 const {login, signup} = require("../Controllers/Auth");
 const  {createJob}  = require("../Controllers/Addjobs"); // Ensure this is correct
@@ -17,6 +18,7 @@ router.get("/alljobs",getAllJobs);
 router.post("/login", login);
 router.post("/register", signup);
 router.post("/addjobs",createJob);
+router.post("/adduserdetail",createUser)
 // Route to get all jobs by email
 
 
