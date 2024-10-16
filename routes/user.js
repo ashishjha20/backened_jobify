@@ -12,13 +12,21 @@ const  {createJob}  = require("../Controllers/Addjobs"); // Ensure this is corre
 const {auth, isStudent,isAdmin} = require("../middlewares/auth");
 const {getAllJobs} = require("../Controllers/Getjobsbycompany")
 const { updateInterestedSchema } = require("../controllers/UpdateInterestedSchema");
+const { getInterestedCandidates}=require("../Controllers/GetInterestedCanidate")
+const {deleteJob}=require("../Controllers/DeleteJob");
+const {getUserByEmail }=require("../Controllers/GetUserDetails");
 
 router.put("/updateInterest", updateInterestedSchema);
+router.get("/getdetails/:email",getUserByEmail );
 
 
 
 // Define the route for getting jobs by email
 router.get("/alljobs",getAllJobs);
+// Example route in your server.js or routes file
+router.get('/candidates/:companyEmail/:title', getInterestedCandidates);
+
+
 
 router.post("/login", login);
 router.post("/register", signup);
@@ -26,6 +34,8 @@ router.post("/addjobs",createJob);
 router.post("/adduserdetail",createUser)
 // Route to get all jobs by email
 
+
+router.delete("/deleteJob/:jobId", deleteJob);
 
 
 //testing protected routes for single middleware
